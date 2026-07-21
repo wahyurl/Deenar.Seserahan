@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deenar Seserahan Gallery — Sewa Box &amp; Dekorasi Seserahan Premium</title>
+<meta name="description" content="Deenar Seserahan Gallery — penyewaan box seserahan, ring box, parcel, dan dekorasi mobil pengantin dengan sentuhan elegan cream &amp; gold.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ================= DESIGN TOKENS ================= */
+  :root{
+    --cream-bg:#F8F1E4;
+    --cream-alt:#F1E6D2;
+    --card:#FFFDF9;
+    --ink:#332A1E;
+    --ink-soft:#7B6C53;
+    --ink-faint:#A5967C;
+    --gold:#B6893F;
+    --gold-deep:#8C6A2E;
+    --gold-light:#E7D3A3;
+    --line:#E3D3AE;
+    --shadow: 0 18px 40px -22px rgba(80,60,20,0.35);
+    --radius: 2px;
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream-bg);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  h1,h2,h3,h4{font-family:'Cormorant Garamond', serif; font-weight:500; color:var(--ink); letter-spacing:.01em;}
+  button{font-family:inherit; cursor:pointer; border:none; background:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-size:12px; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--gold-deep); font-weight:500; display:flex; align-items:center; gap:12px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--gold);}
+  ::selection{background:var(--gold-light); color:var(--ink);}
+  :focus-visible{outline:2px solid var(--gold-deep); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+  }
+
+  /* ================= REVEAL ANIM ================= */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ================= HEADER ================= */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:200;
+    background:rgba(248,241,228,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:all .35s ease;
+  }
+  header.scrolled{
+    border-bottom:1px solid var(--line);
+    box-shadow:0 8px 24px -18px rgba(80,60,20,.4);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0; transition:padding .35s ease;
+  }
+  header.scrolled .nav-inner{padding:14px 0;}
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-mark{width:34px; height:34px; flex-shrink:0;}
+  .logo-text{display:flex; flex-direction:column; line-height:1.1;}
+  .logo-text .name{font-family:'Cormorant Garamond',serif; font-size:21px; letter-spacing:.03em; color:var(--ink);}
+  .logo-text .sub{font-size:9px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold-deep);}
+  nav.main-nav{display:flex; align-items:center; gap:38px;}
+  nav.main-nav a{
+    font-size:13px; letter-spacing:.06em; color:var(--ink-soft);
+    position:relative; padding:4px 0; transition:color .25s ease;
+  }
+  nav.main-nav a::after{
+    content:""; position:absolute; left:0; bottom:-2px; height:1px; width:0;
+    background:var(--gold); transition:width .3s ease;
+  }
+  nav.main-nav a:hover{color:var(--ink);}
+  nav.main-nav a:hover::after{width:100%;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 26px; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    border:1px solid var(--gold); border-radius:var(--radius);
+    transition:all .3s ease; white-space:nowrap;
+  }
+  .btn-solid{background:var(--gold); color:#fff;}
+  .btn-solid:hover{background:var(--gold-deep); border-color:var(--gold-deep);}
+  .btn-outline{background:transparent; color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--cream-bg); border-color:var(--ink);}
+  .hamburger{display:none; flex-direction:column; gap:5px; width:26px;}
+  .hamburger span{height:1px; background:var(--ink); width:100%; transition:all .3s ease;}
+
+  .mobile-menu{
+    position:fixed; inset:0; background:var(--cream-bg); z-index:300;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:34px;
+    transform:translateY(-100%); transition:transform .45s ease;
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--ink);}
+  .mobile-close{position:absolute; top:26px; right:32px; font-size:26px; color:var(--ink); background:none; border:none;}
+
+  /* ================= HERO ================= */
+  .hero{
+    padding:168px 0 90px; position:relative; overflow:hidden;
+  }
+  .hero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center;}
+  .hero-eyebrow{margin-bottom:22px;}
+  .hero h1{font-size:clamp(38px,5.6vw,64px); line-height:1.08; font-style:normal;}
+  .hero h1 em{font-style:italic; color:var(--gold-deep);}
+  .hero p.lead{margin-top:22px; max-width:460px; color:var(--ink-soft); font-size:16px;}
+  .hero-actions{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .hero-stats{display:flex; gap:38px; margin-top:56px; padding-top:30px; border-top:1px solid var(--line);}
+  .hero-stats div strong{display:block; font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--gold-deep);}
+  .hero-stats div span{font-size:11.5px; letter-spacing:.08em; color:var(--ink-soft); text-transform:uppercase;}
+
+  .hero-art{position:relative; display:flex; align-items:center; justify-content:center;}
+  .hero-art .ring-bg{
+    position:absolute; width:120%; height:120%; border-radius:50%;
+    border:1px solid var(--gold-light); opacity:.7;
+  }
+  .hero-art .ring-bg.r2{width:96%; height:96%; border-style:dashed;}
+  .hero-art svg{position:relative; z-index:2; width:100%; max-width:380px;}
+
+  /* ================= MARQUEE / CATEGORY PILLS ================= */
+  .pill-nav-wrap{
+    position:sticky; top:74px; z-index:150; background:var(--cream-bg);
+    border-bottom:1px solid var(--line); border-top:1px solid var(--line);
+  }
+  header.scrolled ~ .pill-nav-wrap{top:60px;}
+  .pill-nav{
+    display:flex; gap:10px; padding:14px 0; overflow-x:auto; scrollbar-width:none;
+  }
+  .pill-nav::-webkit-scrollbar{display:none;}
+  .pill-nav button{
+    flex-shrink:0; padding:9px 20px; font-size:12px; letter-spacing:.05em;
+    border:1px solid var(--line); border-radius:30px; color:var(--ink-soft);
+    transition:all .25s ease; background:var(--card);
+  }
+  .pill-nav button:hover{border-color:var(--gold); color:var(--ink);}
+  .pill-nav button.active{background:var(--ink); color:var(--cream-bg); border-color:var(--ink);}
+
+  /* ================= SECTION SHELL ================= */
+  section.etalase{padding:96px 0; scroll-margin-top:130px;}
+  section.etalase:nth-of-type(even){background:var(--cream-alt);}
+  .etalase-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:30px;
+    margin-bottom:48px; flex-wrap:wrap;
+  }
+  .etalase-head h2{font-size:clamp(28px,3.4vw,40px); margin-top:12px;}
+  .etalase-head p{color:var(--ink-soft); max-width:420px; font-size:14.5px; margin-top:10px;}
+  .etalase-num{font-family:'Cormorant Garamond',serif; font-size:64px; color:var(--gold-light); line-height:1;}
+
+  /* ================= PRODUCT GRID ================= */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(268px,1fr)); gap:26px;
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    display:flex; flex-direction:column;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:var(--shadow); border-color:var(--gold-light);}
+  .card-media{
+    aspect-ratio:1/1; background:
+      radial-gradient(circle at 30% 20%, #fffef9 0%, var(--cream-alt) 70%);
+    display:flex; align-items:center; justify-content:center; position:relative;
+    border-bottom:1px solid var(--line); cursor:pointer; overflow:hidden;
+  }
+  .card-media svg{width:56%; height:56%;}
+  .card-media img{
+    width:100%; height:100%; object-fit:cover; transition:transform .4s ease;
+  }
+  .card:hover .card-media img{transform:scale(1.05);}
+  
+  .card-badge{
+    position:absolute; top:12px; left:12px; background:var(--ink); color:var(--cream-bg);
+    font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:5px 10px; border-radius:20px; z-index:2;
+  }
+  .card-body{padding:20px 22px 22px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .card-body h3{font-size:20px; font-weight:500;}
+  .card-meta{display:flex; gap:8px; flex-wrap:wrap;}
+  .card-meta span{
+    font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-deep);
+    border:1px solid var(--gold-light); padding:3px 9px; border-radius:20px;
+  }
+  .card-desc{font-size:13px; color:var(--ink-soft); flex:1;}
+  .card-footer{
+    display:flex; align-items:center; justify-content:space-between; margin-top:6px;
+    padding-top:14px; border-top:1px dashed var(--line);
+  }
+  .price{font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);}
+  .price small{font-family:'Jost',sans-serif; font-size:11px; color:var(--ink-faint); font-weight:400;}
+  .card-cta{
+    font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#fff;
+    background:var(--gold); padding:9px 16px; border-radius:30px; transition:background .25s ease;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .card-cta:hover{background:var(--gold-deep);}
+
+  /* ================= CARA SEWA ================= */
+  .steps{padding:100px 0; position:relative;}
+  .steps-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:40px; position:relative; margin-top:56px;
+  }
+  .steps-grid::before{
+    content:""; position:absolute; top:34px; left:12%; right:12%; height:1px;
+    background:repeating-linear-gradient(to right, var(--gold) 0 8px, transparent 8px 16px);
+    z-index:0;
+  }
+  .step{position:relative; z-index:1; text-align:center;}
+  .step-num{
+    width:68px; height:68px; margin:0 auto 22px; border-radius:50%;
+    background:var(--card); border:1px solid var(--gold-light); color:var(--gold-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond',serif; font-size:26px;
+  }
+  .step h4{font-size:19px; margin-bottom:8px;}
+  .step p{font-size:13.5px; color:var(--ink-soft); max-width:260px; margin:0 auto;}
+
+  /* ================= CTA BANNER ================= */
+  .cta-banner{
+    margin:0 auto; max-width:var(--maxw); padding:70px 60px;
+    background:var(--ink); color:var(--cream-bg); border-radius:2px;
+    display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+    position:relative; overflow:hidden;
+  }
+  .cta-banner::before{
+    content:""; position:absolute; inset:0; opacity:.08;
+    background-image:radial-gradient(circle, var(--gold-light) 1px, transparent 1px);
+    background-size:16px 16px;
+  }
+  .cta-banner h2{color:#fff; font-size:clamp(24px,3vw,34px); max-width:480px; position:relative;}
+  .cta-banner p{color:var(--gold-light); margin-top:10px; font-size:14px; position:relative;}
+  .cta-actions{position:relative; display:flex; gap:14px; flex-wrap:wrap;}
+  .cta-banner .btn-outline{border-color:var(--gold-light); color:#fff;}
+  .cta-banner .btn-outline:hover{background:var(--gold-light); color:var(--ink); border-color:var(--gold-light);}
+  .cta-wrap-outer{padding:0 32px; margin:20px 0 0;}
+
+  /* ================= FOOTER ================= */
+  footer{padding:90px 0 30px; background:var(--cream-bg);}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px;
+    padding-bottom:50px; border-bottom:1px solid var(--line);
+  }
+  .footer-brand p{font-size:13.5px; color:var(--ink-soft); margin-top:14px; max-width:280px;}
+  .footer-col h5{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:18px;}
+  .footer-col ul li{margin-bottom:11px;}
+  .footer-col ul li a{font-size:13.5px; color:var(--ink-soft); transition:color .2s ease;}
+  .footer-col ul li a:hover{color:var(--gold-deep);}
+  .footer-social{display:flex; gap:12px; margin-top:16px;}
+  .footer-social a{
+    width:34px; height:34px; border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; transition:all .25s ease;
+  }
+  .footer-social a:hover{border-color:var(--gold); background:var(--gold); color:#fff;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; padding-top:26px; font-size:12px;
+    color:var(--ink-faint); flex-wrap:wrap; gap:10px;
+  }
+
+  /* ================= FLOATING WA ================= */
+  .float-wa{
+    position:fixed; bottom:26px; right:26px; z-index:180;
+    width:56px; height:56px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,.4); transition:transform .3s ease;
+  }
+  .float-wa:hover{transform:scale(1.08);}
+
+  /* ================= MODAL ================= */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(51,42,30,.55); backdrop-filter:blur(3px);
+    z-index:400; display:flex; align-items:center; justify-content:center; padding:24px;
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+  }
+  .modal-overlay.open{opacity:1; pointer-events:auto;}
+  .modal{
+    background:var(--card); max-width:640px; width:100%; border-radius:2px;
+    display:grid; grid-template-columns:1fr 1fr; overflow:hidden;
+    transform:translateY(18px); transition:transform .35s ease;
+  }
+  .modal-overlay.open .modal{transform:translateY(0);}
+  .modal-media{background:var(--cream-alt); display:flex; align-items:center; justify-content:center; padding:0; overflow:hidden;}
+  .modal-media svg{width:80%; padding:30px;}
+  .modal-media img{width:100%; height:100%; object-fit:cover;}
+  
+  .modal-body{padding:34px 30px; display:flex; flex-direction:column; position:relative;}
+  .modal-close{position:absolute; top:14px; right:16px; font-size:20px; color:var(--ink-soft);}
+  .modal-body h3{font-size:26px; margin-top:6px;}
+  .modal-body .card-meta{margin:12px 0;}
+  .modal-body p.desc{font-size:13.5px; color:var(--ink-soft); margin-bottom:18px;}
+  .modal-body .price{font-size:28px; margin-bottom:20px;}
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:980px){
+    nav.main-nav, .header-actions{display:none;}
+    .hamburger{display:flex;}
+    .hero .wrap{grid-template-columns:1fr; text-align:center;}
+    .hero-actions{justify-content:center;}
+    .hero-stats{justify-content:center;}
+    .hero-art{order:-1; margin-bottom:20px;}
+    .steps-grid{grid-template-columns:1fr; gap:50px;}
+    .steps-grid::before{display:none;}
+    .testi-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:34px;}
+    .modal{grid-template-columns:1fr;}
+    .modal-media{height:250px;}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 20px;}
+    .footer-grid{grid-template-columns:1fr;}
+    .cta-banner{padding:44px 26px; flex-direction:column; align-items:flex-start;}
+    .hero{padding-top:150px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <rect x="6" y="14" width="28" height="20" stroke="#B6893F" stroke-width="1.3"/>
+        <path d="M6 14 L20 5 L34 14" stroke="#B6893F" stroke-width="1.3" fill="none"/>
+        <path d="M14 34 V22 H26 V34" stroke="#B6893F" stroke-width="1.1"/>
+        <circle cx="20" cy="14" r="2.2" stroke="#B6893F" stroke-width="1"/>
+      </svg>
+      <span class="logo-text">
+        <span class="name">Deenar</span>
+        <span class="sub">Seserahan Gallery</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="#beranda">Beranda</a>
+      <a href="#etalase">Etalase</a>
+      <a href="#cara-sewa">Cara Sewa</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-solid" id="wa-header" href="#" target="_blank" rel="noopener">Chat WhatsApp</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Tutup menu">&times;</button>
+  <a href="#beranda">Beranda</a>
+  <a href="#etalase">Etalase</a>
+  <a href="#cara-sewa">Cara Sewa</a>
+  <a href="#kontak">Kontak</a>
+  <a class="btn btn-solid" id="wa-mobile" href="#" target="_blank" rel="noopener">Chat WhatsApp</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="beranda" style="scroll-margin-top:90px;">
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <div class="eyebrow hero-eyebrow">Sewa Box &amp; Dekorasi Seserahan</div>
+      <h1>Seserahan yang<br><em>berkesan</em>, dikemas<br>dengan elegan</h1>
+      <p class="lead">Deenar Seserahan Gallery menghadirkan koleksi box seserahan, ring box, parcel, hingga dekorasi mobil pengantin — dirancang rapi dengan sentuhan cream &amp; gold untuk momen lamaran dan pernikahan Anda.</p>
+      <div class="hero-actions">
+        <a href="#etalase" class="btn btn-solid">Lihat Etalase</a>
+        <a href="#kontak" class="btn btn-outline">Konsultasi Gratis</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>8</strong><span>Kategori Produk</span></div>
+        <div><strong>0</strong><span>Pasangan Terlayani</span></div>
+      </div>
+    </div>
+    <div class="hero-art reveal">
+      <div class="ring-bg"></div>
+      <div class="ring-bg r2"></div>
+      <svg viewBox="0 0 300 300" fill="none">
+        <path d="M60 130 L150 80 L240 130 L240 220 L150 260 L60 220 Z" stroke="#B6893F" stroke-width="1.4"/>
+        <path d="M60 130 L150 170 L240 130" stroke="#B6893F" stroke-width="1.4"/>
+        <path d="M150 170 V260" stroke="#B6893F" stroke-width="1.4"/>
+        <path d="M150 80 V170" stroke="#8C6A2E" stroke-width="1" opacity=".5"/>
+        <circle cx="150" cy="125" r="10" stroke="#B6893F" stroke-width="1.2"/>
+        <path d="M150 115 C155 105 165 105 165 115 C165 122 150 128 150 128 C150 128 135 122 135 115 C135 105 145 105 150 115 Z" stroke="#B6893F" stroke-width="1"/>
+        <g stroke="#C9A25F" stroke-width="1" opacity=".8">
+          <circle cx="90" cy="70" r="4"/>
+          <circle cx="100" cy="60" r="4"/>
+          <circle cx="80" cy="60" r="4"/>
+          <circle cx="90" cy="52" r="4"/>
+          <circle cx="210" cy="70" r="4"/>
+          <circle cx="220" cy="60" r="4"/>
+          <circle cx="200" cy="60" r="4"/>
+          <circle cx="210" cy="52" r="4"/>
+        </g>
+        <path d="M20 240 Q150 290 280 240" stroke="#E7D3A3" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CATEGORY PILLS ================= -->
+<div class="pill-nav-wrap">
+  <div class="wrap">
+    <div class="pill-nav" id="pillNav">
+      <button data-target="classic-box" class="active">Classic Box</button>
+      <button data-target="hexa-box">Hexa Box</button>
+      <button data-target="hidden-box">Classic Hidden</button>
+      <button data-target="double-decor">Double Decor Hidden</button>
+      <button data-target="peti-lengkung">Peti Lengkung</button>
+      <button data-target="ring-box">Ring Box</button>
+      <button data-target="parcel">Parcel</button>
+      <button data-target="mobil">Dekorasi Mobil</button>
+    </div>
+  </div>
+</div>
+
+<main id="etalase">
+
+<!-- ============ 1. CLASSIC BOX ============ -->
+<section class="etalase" id="classic-box">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 01</div>
+        <h2>Classic Box</h2>
+        <p>Classic box seserahan: box seserahan dengan tutup akrilik segi 4 dan full jasa hias</p>
+      </div>
+      <div class="etalase-num">01</div>
+    </div>
+    <div class="grid" id="grid-classic-box"></div>
+  </div>
+</section>
+
+<!-- ============ 2. HEXA BOX ============ -->
+<section class="etalase" id="hexa-box">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 02</div>
+        <h2>Hexa Box</h2>
+        <p>Box segi enam dengan list list pinggir elegan, memberi kesan modern dan berbeda dari box seserahan pada umumnya.</p>
+      </div>
+      <div class="etalase-num">02</div>
+    </div>
+    <div class="grid" id="grid-hexa-box"></div>
+  </div>
+</section>
+
+<!-- ============ 3. CLASSIC HIDDEN BOX ============ -->
+<section class="etalase" id="hidden-box">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 03</div>
+        <h2>Classic Hidden Box</h2>
+        <p>Box tertutup rapi tanpa jendela transparan, dihias pita dan ornamen di bagian atas — memberi kesan misterius nan elegan.</p>
+      </div>
+      <div class="etalase-num">03</div>
+    </div>
+    <div class="grid" id="grid-hidden-box"></div>
+  </div>
+</section>
+
+<!-- ============ 4. DOUBLE DECOR HIDDEN BOX ============ -->
+<section class="etalase" id="double-decor">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 04</div>
+        <h2>Double Decor Hidden Box</h2>
+        <p>Versi hidden box dengan dua lapis dekorasi — kombinasi kain, bunga, dan aksen kristal untuk kesan mewah berlapis.</p>
+      </div>
+      <div class="etalase-num">04</div>
+    </div>
+    <div class="grid" id="grid-double-decor"></div>
+  </div>
+</section>
+
+<!-- ============ 5. PETI LENGKUNG BOX ============ -->
+<section class="etalase" id="peti-lengkung">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 05</div>
+        <h2>Peti Lengkung Box</h2>
+        <p>Peti berbentuk lengkung ala peti harta karun, memberi kesan klasik dan berkarakter untuk seserahan istimewa.</p>
+      </div>
+      <div class="etalase-num">05</div>
+    </div>
+    <div class="grid" id="grid-peti-lengkung"></div>
+  </div>
+</section>
+
+<!-- ============ 6. ENGAGEMENT RING BOX ============ -->
+<section class="etalase" id="ring-box">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 06</div>
+        <h2>Engagement Ring Box</h2>
+        <p>Box cincin lamaran dalam dua pilihan gaya — classic bervelvet lembut, dan crystal dengan taburan kristal berkilau.</p>
+      </div>
+      <div class="etalase-num">06</div>
+    </div>
+    <div class="grid" id="grid-ring-box"></div>
+  </div>
+</section>
+
+<!-- ============ 7. PARCEL ============ -->
+<section class="etalase" id="parcel">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 07</div>
+        <h2>Parcel Seserahan</h2>
+        <p>Tersedia 7 jenis parcel siap kemas — dari kebutuhan sehari-hari hingga hampers kecantikan dan bunga premium.</p>
+      </div>
+      <div class="etalase-num">07</div>
+    </div>
+    <div class="grid" id="grid-parcel"></div>
+  </div>
+</section>
+
+<!-- ============ 8. WEDDING CAR DECORATION ============ -->
+<section class="etalase" id="mobil">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Etalase — 08</div>
+        <h2>Wedding Car Decoration</h2>
+        <p>Dekorasi mobil pengantin dengan rangkaian bunga dan aksen gold, tersedia dalam tiga paket sesuai kebutuhan.</p>
+      </div>
+      <div class="etalase-num">08</div>
+    </div>
+    <div class="grid" id="grid-mobil"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= CARA SEWA ================= -->
+<section class="steps" id="cara-sewa">
+  <div class="wrap">
+    <div class="etalase-head reveal" style="margin-bottom:0;">
+      <div>
+        <div class="eyebrow">Alur Pemesanan</div>
+        <h2>Cara Sewa, Mudah dan Cepat</h2>
+      </div>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Pilih Produk</h4>
+        <p>Jelajahi etalase dan pilih box atau dekorasi yang sesuai dengan tema acara Anda.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Chat &amp; Konfirmasi</h4>
+        <p>Hubungi kami via WhatsApp untuk cek ketersediaan tanggal dan konfirmasi pesanan.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Antar &amp; Pasang</h4>
+        <p>Tim kami mengantar dan menata seserahan Anda tepat waktu, siap untuk acara.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BANNER ================= -->
+<div class="cta-wrap-outer">
+  <div class="cta-banner reveal">
+    <div>
+      <h2>Siap menyiapkan seserahan yang berkesan?</h2>
+      <p>Konsultasikan kebutuhan seserahan Anda, kami bantu pilih paket yang pas.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" id="wa-cta" target="_blank" rel="noopener" class="btn btn-solid" style="border-color:#fff;">Chat WhatsApp</a>
+      <a href="#etalase" class="btn btn-outline">Lihat Semua Produk</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer id="kontak">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+            <rect x="6" y="14" width="28" height="20" stroke="#B6893F" stroke-width="1.3"/>
+            <path d="M6 14 L20 5 L34 14" stroke="#B6893F" stroke-width="1.3" fill="none"/>
+          </svg>
+          <span class="logo-text"><span class="name">Deenar</span><span class="sub">Seserahan Gallery</span></span>
+        </a>
+        <p>Menyewakan box seserahan, ring box, parcel, dan dekorasi mobil pengantin dengan konsep elegan cream &amp; gold sejak 2019.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/deenar.seserahan" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://wa.me/6281265414787" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Etalase</h5>
+        <ul>
+          <li><a href="#classic-box">Classic Box</a></li>
+          <li><a href="#hexa-box">Hexa Box</a></li>
+          <li><a href="#hidden-box">Classic Hidden</a></li>
+          <li><a href="#peti-lengkung">Peti Lengkung</a></li>
+          <li><a href="#ring-box">Ring Box</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Perusahaan</h5>
+        <ul>
+          <li><a href="#beranda">Tentang Kami</a></li>
+          <li><a href="#cara-sewa">Cara Sewa</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontak</h5>
+        <ul>
+          <li><a href="#">WhatsApp: 0812-6541-4787</a></li>
+          <li><a href="#">Keude Aceh, Jl. Pasar Buah, Kec. Banda Sakti, Kota Lhokseumawe</a></li>
+          <li><a href="#">Buka Setiap Hari, 09.00–20.00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Deenar Seserahan Gallery. Seluruh hak cipta dilindungi.</span>
+      <span>Dibuat dengan ♥ untuk momen istimewa Anda</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" id="float-wa" class="float-wa" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.03 3.5c-4.94 0-8.95 4-8.95 8.95 0 1.58.41 3.12 1.2 4.48L3 21l4.17-1.24a8.9 8.9 0 0 0 4.86 1.42h.01c4.94 0 8.95-4 8.95-8.95a8.9 8.9 0 0 0-2.4-6.93zM12.04 19.4h-.01a7.4 7.4 0 0 1-4.2-1.28l-.3-.18-3.13.92.9-3.05-.2-.31a7.42 7.42 0 0 1-1.14-3.97 7.44 7.44 0 0 1 7.44-7.44 7.4 7.4 0 0 1 7.44 7.44c0 4.1-3.36 7.87-6.8 7.87zm4.08-5.57c-.22-.11-1.3-.64-1.5-.72-.2-.07-.35-.11-.5.11-.15.22-.58.72-.71.87-.13.15-.26.16-.48.05-.22-.11-.94-.35-1.8-1.12-.66-.6-1.11-1.33-1.24-1.55-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.4.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.4-.06-.11-.5-1.2-.68-1.65-.18-.43-.36-.37-.5-.38h-.43c-.15 0-.4.06-.6.28-.2.22-.8.78-.8 1.9s.82 2.2.93 2.35c.11.15 1.6 2.44 3.87 3.42.54.23.96.37 1.29.48.54.17 1.04.15 1.43.09.44-.07 1.3-.53 1.48-1.04.18-.51.18-.94.13-1.04-.05-.1-.2-.16-.42-.27z"/></svg>
+</a>
+
+<!-- ================= QUICK VIEW MODAL ================= -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-body">
+      <button class="modal-close" id="modalClose" aria-label="Tutup">&times;</button>
+      <div class="eyebrow" id="modalCat">Kategori</div>
+      <h3 id="modalName">Nama Produk</h3>
+      <div class="card-meta" id="modalMeta"></div>
+      <p class="desc" id="modalDesc"></p>
+      <div class="price" id="modalPrice"></div>
+      <a href="#" class="card-cta" id="modalCta" target="_blank" rel="noopener" style="justify-content:center;">Sewa via WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= CONFIG ================= */
+  const WA_NUMBER = "6281265414787"; 
+  function waLink(text){
+    return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+  }
+
+  /* ================= FALLBACK SVG ICONS ================= */
+  const ICONS = {
+    classic: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><rect x="20" y="46" width="80" height="54" rx="1"/><path d="M20 46 L60 26 L100 46"/><path d="M20 46 L60 66 L100 46"/><path d="M60 66 V100"/><circle cx="60" cy="46" r="7" stroke-width="1.2"/></svg>`,
+    hexa: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><path d="M60 18 L98 40 V80 L60 102 L22 80 V40 Z"/><path d="M22 40 L60 62 L98 40"/><path d="M60 62 V102"/><circle cx="60" cy="46" r="6" stroke-width="1.1"/></svg>`,
+    hidden: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><rect x="18" y="40" width="84" height="56"/><path d="M18 40 L60 22 L102 40"/><path d="M60 22 V40"/><path d="M40 58 Q60 48 80 58" stroke-width="1.1"/><circle cx="60" cy="68" r="10" stroke-width="1"/></svg>`,
+    doubledecor: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><rect x="16" y="44" width="88" height="52"/><path d="M16 44 L60 24 L104 44"/><path d="M30 60 Q60 46 90 60" stroke-width="1.1"/><path d="M30 76 Q60 64 90 76" stroke-width="1.1"/><circle cx="46" cy="58" r="3" stroke-width="1"/><circle cx="74" cy="58" r="3" stroke-width="1"/><circle cx="60" cy="64" r="3" stroke-width="1"/></svg>`,
+    lengkung: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><path d="M20 52 Q60 22 100 52 V92 H20 Z"/><path d="M20 52 Q60 68 100 52" stroke-width="1.1"/><rect x="54" y="52" width="12" height="16" stroke-width="1.1"/></svg>`,
+    ringclassic: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><rect x="30" y="50" width="60" height="42" rx="1"/><path d="M30 50 L60 34 L90 50"/><circle cx="60" cy="70" r="14" stroke-width="1.3"/><path d="M60 58 L64 66 L60 62 L56 66 Z" stroke-width="1"/></svg>`,
+    ringcrystal: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><rect x="30" y="50" width="60" height="42" rx="1"/><path d="M30 50 L60 34 L90 50"/><circle cx="60" cy="70" r="14" stroke-width="1.3"/><g stroke-width="1"><circle cx="42" cy="58" r="2"/><circle cx="78" cy="58" r="2"/><circle cx="42" cy="82" r="2"/><circle cx="78" cy="82" r="2"/><circle cx="60" cy="50" r="2"/></g></svg>`,
+    parcel: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><rect x="24" y="42" width="72" height="54"/><path d="M60 42 V96 M24 62 H96" stroke-width="1.1"/><path d="M50 42 C50 30 70 30 70 42" /><circle cx="60" cy="30" r="4" stroke-width="1"/></svg>`,
+    mobil: `<svg viewBox="0 0 120 120" fill="none" stroke="#B6893F" stroke-width="1.6"><path d="M18 74 L26 54 H94 L102 74 Z"/><rect x="18" y="74" width="84" height="16"/><circle cx="36" cy="90" r="7" stroke-width="1.2"/><circle cx="84" cy="90" r="7" stroke-width="1.2"/><path d="M40 54 Q60 40 80 54" stroke-width="1.1"/><circle cx="60" cy="46" r="3" stroke-width="1"/></svg>`
+  };
+
+  /* ================= PRODUCT DATA (SEMUA ITEM SUDAH MEMILIKI IMG) ================= 
+     Ganti string di dalam "img: ..." dengan URL/Path gambar lokal Anda.
+  ================================================================================== */
+  const CATALOG = {
+    "classic-box": {
+      cat: "Classic Box", icon: "classic",
+      items: [
+        { name: "Classic Box 4  ", desc: "Box klasik ukuran kecil, 4 Box  ", price: "Rp 240.000", unit: "/hari", img: "Classic Box.jpeg" },
+        { name: "Classic Box 8", desc: "Ukuran sedang Paket Wedding, 8 Box", price: "Rp 480.000", unit: "/hari", img: "Classic Box.jpeg" },
+        { name: "Classic Box 16",  desc: "Ukuran besar untuk Paket Extra Wedding 16 Box", price: "Rp 720.000", unit: "/hari", badge: "Populer", img: "Classic Box.jpeg" }
+      ]
+    },
+    "hexa-box": {
+      cat: "Hexa Box", icon: "hexa",
+      items: [
+        { name: "Hexa Box Satuan", size: "25×25×20 cm", desc: "Paket Satuan", price: "Rp 65.000", unit: "/hari", img: "hexa box.jpeg" },
+        { name: "Hexa Box Paket Lamaran", size: "25×25×20 cm", desc: "Paket Lamaran 4 Box", price: "Rp 250.000", unit: "/hari", img: "hexa box.jpeg" }
+      ]
+    },
+    "hidden-box": {
+      cat: "Classic Hidden Box", icon: "hidden",
+      items: [
+        { name: "Hidden Box Satuan", size: "30×30×22 cm", desc: "Tertutup rapi dengan pita gold di bagian atas.", price: "Rp 70.000", unit: "/hari", img: "hidden box.jpeg" },
+        { name: "Hidden Box Paket Lamaran", size: "30×30×22 cm", desc: "Paket Lamaran 4 Box Hidden Box", price: "Rp 260.000", unit: "/hari", img: "hidden box.jpeg" },
+        { name: "Hidden Box Paket Wedding", size: "30×30×22 cm", desc: "Paket Wedding 8 Box", price: "Rp 520.000", unit: "/hari", badge: "Baru", img: "hidden box.jpeg" }
+      ]
+    },
+    "double-decor": {
+      cat: "Double Decor Hidden Box", icon: "doubledecor",
+      items: [
+        { name: "Double Decor Satuan", size: "32×32×24 cm", desc: "Dua lapis dekorasi bunga kain dan aksen gold di tutup.", price: "Rp 80.000", unit: "/hari", img: "hidden box.jpeg" },
+        { name: "Double Decor Paket Lamaran", size: "32×32×24 cm", desc: "Paket Lamaran 4 Box Double Decor", price: "Rp 310.000", unit: "/hari", badge: "Favorit", img: "hidden box.jpeg" },
+        { name: "Double Decor Paket Wedding", size: "32×32×24 cm", desc: "Paket Wedding 8 Box Double Decor", price: "Rp 620.000", unit: "/hari", img: "hidden box.jpeg" }
+      ]
+    },
+    "peti-lengkung": {
+      cat: "Peti Lengkung Box", icon: "lengkung",
+      items: [
+        { name: "Peti Lengkung Satuan", size: "25×20×18 cm", desc: "Peti lengkung mungil, ideal untuk seserahan cincin/perhiasan.", price: "Rp 80.000", unit: "/hari", img: "lengkung.jpeg" },
+        { name: "Peti Lengkung Paket Lamaran ", size: "32×26×22 cm", desc: "Paket 4 Peti Lengkung ", price: "Rp 320.000", unit: "/hari", img: "lengkung.jpeg" },
+        { name: "Peti Lengkung Paket Wedding", size: "40×32×28 cm", desc: "Paket 8 Peti Lengkung untuk seserahan utama.", price: "Rp 640.000", unit: "/hari", img: "lengkung.jpeg" }
+      ]
+    },
+    "ring-box": {
+      cat: "Engagement Ring Box", icon: "ringclassic",
+      items: [
+        { name: "Ring Box ", size: "12×12×10 cm", icon: "ringclassic", desc: "Bantalan beludru dengan dekorasi bunga", price: "Rp 50.000", unit: "/hari", img: "jewelry box.jpeg" },
+        { name: "Ring Box Crystal", size: "12×12×10 cm", icon: "ringcrystal", desc: "Taburan kristal berkilau mengelilingi bingkai cincin.", price: "Rp 100.000", unit: "/hari", badge: "Mewah", img: "jewerly box.jpeg" }
+      ]
+    },
+    "parcel": {
+      cat: "Parcel Seserahan", icon: "parcel",
+      items: [
+        { name: "Parcel Seserahan", size: "1 keranjang", desc: "Rangkaian parcel dapat disesuaikan dengan kebutuhan Anda.", price: "Rp 50.000 - Rp 1.000.000", unit: "/paket", img: "parcel.jpeg" }
+      ]
+    },
+    "mobil": {
+      cat: "Wedding Car Decoration", icon: "mobil",
+      items: [
+        { name: "Paket Simple Wedding Car", size: "1 unit mobil", desc: "Dekorasi bunga sederhana di kap depan dan kaca belakang dan dapat disesuaikan dengan kebutuhan Anda.", price: "Rp 250.000 - Rp 400.000", unit: "/acara", img: "car.jpeg" }
+      ]
+    }
+  };
+
+  /* ================= RENDER PRODUCT GRIDS ================= */
+  function renderCatalog(){
+    Object.keys(CATALOG).forEach(function(key){
+      const group = CATALOG[key];
+      const gridId = "grid-" + key;
+      const container = document.getElementById(gridId);
+      if(!container) return;
+      let html = "";
+      group.items.forEach(function(item, idx){
+        const iconKey = item.icon || group.icon;
+        const svgContent = ICONS[iconKey] || ICONS.classic;
+        
+        // Menampilkan tag <img src="..."> jika path img diisi, jika file tidak ditemukan/kosong akan pakai SVG icon fallback
+        const mediaHTML = (item.img && item.img.trim() !== "") 
+          ? `<img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.parentElement.innerHTML='${svgContent.replace(/'/g, "\\'")}';">` 
+          : svgContent;
+
+        const imgAttr = (item.img && item.img.trim() !== "") ? `data-img="${item.img}"` : "";
+
+        html += `
+        <div class="card reveal" ${imgAttr} data-cat="${group.cat}" data-name="${item.name}" data-size="${item.size}" data-desc="${item.desc}" data-price="${item.price}" data-unit="${item.unit}" data-icon="${iconKey}">
+          <div class="card-media" data-open="modal">
+            ${item.badge ? `<span class="card-badge">${item.badge}</span>` : ""}
+            ${mediaHTML}
+          </div>
+          <div class="card-body">
+            <h3>${item.name}</h3>
+            <div class="card-meta"><span>${item.unit.replace('/','')}</span></div>
+            <p class="card-desc">${item.desc}</p>
+            <div class="card-footer">
+              <div class="price">${item.price}<small> ${item.unit}</small></div>
+              <a href="#" class="card-cta" data-wa="${item.name}">Sewa</a>
+            </div>
+          </div>
+        </div>`;
+      });
+      container.innerHTML = html;
+    });
+  }
+  renderCatalog();
+
+  /* ================= WA LINKS ================= */
+  const defaultMsg = "Halo Deenar Seserahan Gallery, saya ingin bertanya tentang sewa box/dekorasi seserahan.";
+  ["wa-header","wa-mobile","wa-cta","float-wa"].forEach(function(id){
+    const el = document.getElementById(id);
+    if(el) el.href = waLink(defaultMsg);
+  });
+
+  document.addEventListener("click", function(e){
+    const waBtn = e.target.closest("[data-wa]");
+    if(waBtn){
+      e.preventDefault();
+      const name = waBtn.getAttribute("data-wa");
+      const msg = "Halo Deenar Seserahan Gallery, saya ingin menyewa produk: " + name + ". Apakah tersedia untuk tanggal acara saya?";
+      window.open(waLink(msg), "_blank", "noopener");
+    }
+  });
+
+  /* ================= HEADER SCROLL STATE ================= */
+  const header = document.getElementById("site-header");
+  function onScroll(){
+    if(window.scrollY > 30){ header.classList.add("scrolled"); }
+    else{ header.classList.remove("scrolled"); }
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+
+  /* ================= MOBILE MENU ================= */
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileClose = document.getElementById("mobileClose");
+  hamburgerBtn.addEventListener("click", function(){ mobileMenu.classList.add("open"); });
+  mobileClose.addEventListener("click", function(){ mobileMenu.classList.remove("open"); });
+  mobileMenu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ mobileMenu.classList.remove("open"); });
+  });
+
+  /* ================= CATEGORY PILL NAV ================= */
+  const pillButtons = Array.from(document.querySelectorAll("#pillNav button"));
+  pillButtons.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      const target = document.getElementById(btn.getAttribute("data-target"));
+      if(target){
+        const y = target.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({top:y, behavior:"smooth"});
+      }
+    });
+  });
+
+  const sections = Object.keys(CATALOG).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  if("IntersectionObserver" in window){
+    const spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          pillButtons.forEach(function(b){ b.classList.remove("active"); });
+          const active = pillButtons.find(function(b){ return b.getAttribute("data-target") === entry.target.id; });
+          if(active){
+            active.classList.add("active");
+            active.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"});
+          }
+        }
+      });
+    }, {rootMargin:"-40% 0px -50% 0px", threshold:0});
+    sections.forEach(function(s){ spy.observe(s); });
+  }
+
+  /* ================= REVEAL ON SCROLL ================= */
+  const revealEls = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){
+    const revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("in");
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ revealObs.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ================= QUICK VIEW MODAL ================= */
+  const overlay = document.getElementById("modalOverlay");
+  const modalMedia = document.getElementById("modalMedia");
+  const modalCat = document.getElementById("modalCat");
+  const modalName = document.getElementById("modalName");
+  const modalMeta = document.getElementById("modalMeta");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalPrice = document.getElementById("modalPrice");
+  const modalCta = document.getElementById("modalCta");
+  const modalClose = document.getElementById("modalClose");
+
+  function openModal(card){
+    const imgSrc = card.getAttribute("data-img");
+    const icon = card.getAttribute("data-icon");
+    const name = card.getAttribute("data-name");
+
+    if(imgSrc && imgSrc.trim() !== ""){
+      modalMedia.innerHTML = `<img src="${imgSrc}" alt="${name}" onerror="this.onerror=null; this.parentElement.innerHTML='${(ICONS[icon]||ICONS.classic).replace(/'/g, "\\'")}';">`;
+    } else {
+      modalMedia.innerHTML = ICONS[icon] || ICONS.classic;
+    }
+
+    modalCat.textContent = card.getAttribute("data-cat");
+    modalName.textContent = name;
+    modalDesc.textContent = card.getAttribute("data-desc");
+    modalPrice.innerHTML = card.getAttribute("data-price") + " <small>" + card.getAttribute("data-unit") + "</small>";
+    modalMeta.innerHTML = "<span>" + card.getAttribute("data-size") + "</span>";
+    
+    modalCta.href = waLink("Halo Deenar Seserahan Gallery, saya ingin menyewa produk: " + name + ". Apakah tersedia untuk tanggal acara saya?");
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  
+  function closeModal(){
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  
+  document.addEventListener("click", function(e){
+    const media = e.target.closest("[data-open='modal']");
+    if(media){
+      const card = media.closest(".card");
+      if(card) openModal(card);
+    }
+  });
+  
+  modalClose.addEventListener("click", closeModal);
+  overlay.addEventListener("click", function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeModal(); });
+
+})();
+</script>
+</body>
+</html> 
