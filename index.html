@@ -229,6 +229,24 @@
     display:flex; align-items:center; justify-content:center;
     font-family:'Cormorant Garamond',serif; font-size:26px;
   }
+  .testi-grid{
+    display:grid; grid-template-columns:repeat(3,minmax(220px,1fr));
+    gap:26px;
+    margin-top:36px;
+  }
+  .testi-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 24px;
+    min-height:220px;
+  }
+  .testi-card p{
+    font-size:14px; color:var(--ink-soft); line-height:1.85;
+  }
+  .testi-card strong{
+    display:block; margin-top:22px; font-size:15px; color:var(--ink);
+  }
   .step h4{font-size:19px; margin-bottom:8px;}
   .step p{font-size:13.5px; color:var(--ink-soft); max-width:260px; margin:0 auto;}
 
@@ -316,7 +334,7 @@
     .hero-art{order:-1; margin-bottom:20px;}
     .steps-grid{grid-template-columns:1fr; gap:50px;}
     .steps-grid::before{display:none;}
-    .testi-row{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr; gap:34px;}
     .modal{grid-template-columns:1fr;}
     .modal-media{height:250px;}
@@ -348,6 +366,7 @@
     </a>
     <nav class="main-nav">
       <a href="#beranda">Beranda</a>
+      <a href="#tentang-kami">Tentang Kami</a>
       <a href="#etalase">Etalase</a>
       <a href="#cara-sewa">Cara Sewa</a>
       <a href="#kontak">Kontak</a>
@@ -364,6 +383,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose" aria-label="Tutup menu">&times;</button>
   <a href="#beranda">Beranda</a>
+  <a href="#tentang-kami">Tentang Kami</a>
   <a href="#etalase">Etalase</a>
   <a href="#cara-sewa">Cara Sewa</a>
   <a href="#kontak">Kontak</a>
@@ -408,6 +428,56 @@
         </g>
         <path d="M20 240 Q150 290 280 240" stroke="#E7D3A3" stroke-width="1"/>
       </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TENTANG KAMI ================= -->
+<section class="etalase" id="tentang-kami">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Tentang Kami</div>
+        <h2>Deenar Seserahan Gallery</h2>
+        <p>Kami menyajikan layanan sewa box dan dekorasi seserahan dengan pembayaran mudah, tim profesional, pelayanan cepat, jaminan kualitas, dan respons WhatsApp yang sigap.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="card-body">
+          <h3>Keunggulan</h3>
+          <div class="card-meta"><span>Cara pembayaran mudah</span></div>
+          <p class="card-desc">Transfer, QRIS, atau pembayaran digital lain yang mempermudah proses transaksi Anda.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-body">
+          <h3>Tim Profesional</h3>
+          <div class="card-meta"><span>Tim ahli</span></div>
+          <p class="card-desc">Tim kami siap menyiapkan pesanan dengan detail rapi dan etika acara yang sopan.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-body">
+          <h3>Pelayanan Cepat</h3>
+          <div class="card-meta"><span>Respons cepat</span></div>
+          <p class="card-desc">Pesan via WhatsApp, cek stock, dan konfirmasi dalam hitungan jam untuk acara Anda.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-body">
+          <h3>Jaminan Kualitas</h3>
+          <div class="card-meta"><span>Bahan premium</span></div>
+          <p class="card-desc">Setiap box dirangkai dengan bahan berkualitas dan finishing elegan untuk tampilan istimewa.</p>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-body">
+          <h3>Kontak</h3>
+          <div class="card-meta"><span>WhatsApp & alamat</span></div>
+          <p class="card-desc">WhatsApp: 0812-6541-4787 • Keude Aceh, Jl. Pasar Buah, Banda Sakti, Lhokseumawe.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -581,6 +651,33 @@
   </div>
 </section>
 
+<!-- ================= TESTIMONIAL ================= -->
+<section class="etalase">
+  <div class="wrap">
+    <div class="etalase-head reveal">
+      <div>
+        <div class="eyebrow">Testimoni</div>
+        <h2>Suara Pelanggan</h2>
+        <p>Beberapa cerita dari pasangan yang merasa lebih percaya diri dengan seserahan kami.</p>
+      </div>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <p>"Pesanan kami dikemas rapi, layanan cepat, dan timnya sangat membantu. Sungguh pengalaman sewa seserahan yang nyaman."</p>
+        <strong>- Ayu & Fajar</strong>
+      </div>
+      <div class="testi-card">
+        <p>"Pembayaran mudah dan respon WA cepat. Kualitas box klasiknya memukau, cocok untuk lamaran dan wedding."</p>
+        <strong>- Rina & Dedi</strong>
+      </div>
+      <div class="testi-card">
+        <p>"Tim antar sangat profesional, dekorasi sampai tepat waktu, dan ada jaminan kualitas yang membuat kami tenang."</p>
+        <strong>- Nia & Ardi</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CTA BANNER ================= -->
 <div class="cta-wrap-outer">
   <div class="cta-banner reveal">
@@ -697,59 +794,59 @@
     "classic-box": {
       cat: "Classic Box", icon: "classic",
       items: [
-        { name: "Classic Box 4  ", desc: "Box klasik ukuran kecil, 4 Box  ", price: "Rp 240.000", unit: "/hari", img: "Classic Box.jpeg" },
-        { name: "Classic Box 8", desc: "Ukuran sedang Paket Wedding, 8 Box", price: "Rp 480.000", unit: "/hari", img: "Classic Box.jpeg" },
-        { name: "Classic Box 16",  desc: "Ukuran besar untuk Paket Extra Wedding 16 Box", price: "Rp 720.000", unit: "/hari", badge: "Populer", img: "Classic Box.jpeg" }
+        { name: "Classic Box Small", size: "Small", desc: "Paket 4 box klasik, kemasan elegan dengan aksen pita.", price: "Rp 240.000", unit: "/hari", img: "cls 1.jpeg" },
+        { name: "Classic Box Medium", size: "Medium", desc: "Paket 8 box klasik untuk lamaran atau wedding set.", price: "Rp 480.000", unit: "/hari", img: "cls 8.jpeg" },
+        { name: "Classic Box Extra", size: "Extra", desc: "Paket 16 box klasik premium, pilihan terbaik untuk seserahan besar.", price: "Rp 720.000", unit: "/hari", badge: "Populer", img: "classic-box-16.jpeg" }
       ]
     },
     "hexa-box": {
       cat: "Hexa Box", icon: "hexa",
       items: [
-        { name: "Hexa Box Satuan", size: "25×25×20 cm", desc: "Paket Satuan", price: "Rp 65.000", unit: "/hari", img: "hexa box.jpeg" },
-        { name: "Hexa Box Paket Lamaran", size: "25×25×20 cm", desc: "Paket Lamaran 4 Box", price: "Rp 250.000", unit: "/hari", img: "hexa box.jpeg" }
+        { name: "Hexa Box Satuan", size: "25×25×20 cm", desc: "Paket Satuan", price: "Rp 65.000", unit: "/hari", img: "hexa 1.jpeg" },
+        { name: "Hexa Box Paket Lamaran", size: "25×25×20 cm", desc: "Paket Lamaran 4 Box", price: "Rp 250.000", unit: "/hari", img: "hexa-box.jpeg" }
       ]
     },
     "hidden-box": {
       cat: "Classic Hidden Box", icon: "hidden",
       items: [
-        { name: "Hidden Box Satuan", size: "30×30×22 cm", desc: "Tertutup rapi dengan pita gold di bagian atas.", price: "Rp 70.000", unit: "/hari", img: "hidden box.jpeg" },
-        { name: "Hidden Box Paket Lamaran", size: "30×30×22 cm", desc: "Paket Lamaran 4 Box Hidden Box", price: "Rp 260.000", unit: "/hari", img: "hidden box.jpeg" },
-        { name: "Hidden Box Paket Wedding", size: "30×30×22 cm", desc: "Paket Wedding 8 Box", price: "Rp 520.000", unit: "/hari", badge: "Baru", img: "hidden box.jpeg" }
+        { name: "Hidden Box Satuan", size: "30×30×22 cm", desc: "Tertutup rapi dengan pita gold di bagian atas.", price: "Rp 70.000", unit: "/hari", img: "hidden 1.jpeg" },
+        { name: "Hidden Box Paket Lamaran", size: "30×30×22 cm", desc: "Paket Lamaran 4 Box Hidden Box", price: "Rp 260.000", unit: "/hari", img: "hidden 4.jpeg" },
+        { name: "Hidden Box Paket Wedding", size: "30×30×22 cm", desc: "Paket Wedding 8 Box", price: "Rp 520.000", unit: "/hari", badge: "Baru", img: "hidden 8.jpeg" }
       ]
     },
     "double-decor": {
       cat: "Double Decor Hidden Box", icon: "doubledecor",
       items: [
-        { name: "Double Decor Satuan", size: "32×32×24 cm", desc: "Dua lapis dekorasi bunga kain dan aksen gold di tutup.", price: "Rp 80.000", unit: "/hari", img: "hidden box.jpeg" },
-        { name: "Double Decor Paket Lamaran", size: "32×32×24 cm", desc: "Paket Lamaran 4 Box Double Decor", price: "Rp 310.000", unit: "/hari", badge: "Favorit", img: "hidden box.jpeg" },
-        { name: "Double Decor Paket Wedding", size: "32×32×24 cm", desc: "Paket Wedding 8 Box Double Decor", price: "Rp 620.000", unit: "/hari", img: "hidden box.jpeg" }
+        { name: "Double Decor Satuan", size: "32×32×24 cm", desc: "Dua lapis dekorasi bunga kain dan aksen gold di tutup.", price: "Rp 80.000", unit: "/hari", img: "double-decor.jpeg" },
+        { name: "Double Decor Paket Lamaran", size: "32×32×24 cm", desc: "Paket Lamaran 4 Box Double Decor", price: "Rp 310.000", unit: "/hari", badge: "Favorit", img: "double-decor-box.jpeg" },
+        { name: "Double Decor Paket Wedding", size: "32×32×24 cm", desc: "Paket Wedding 8 Box Double Decor", price: "Rp 620.000", unit: "/hari", img: "double-decor-box.jpeg" }
       ]
     },
     "peti-lengkung": {
       cat: "Peti Lengkung Box", icon: "lengkung",
       items: [
-        { name: "Peti Lengkung Satuan", size: "25×20×18 cm", desc: "Peti lengkung mungil, ideal untuk seserahan cincin/perhiasan.", price: "Rp 80.000", unit: "/hari", img: "lengkung.jpeg" },
-        { name: "Peti Lengkung Paket Lamaran ", size: "32×26×22 cm", desc: "Paket 4 Peti Lengkung ", price: "Rp 320.000", unit: "/hari", img: "lengkung.jpeg" },
-        { name: "Peti Lengkung Paket Wedding", size: "40×32×28 cm", desc: "Paket 8 Peti Lengkung untuk seserahan utama.", price: "Rp 640.000", unit: "/hari", img: "lengkung.jpeg" }
+        { name: "Peti Lengkung Satuan", size: "25×20×18 cm", desc: "Peti lengkung mungil, ideal untuk seserahan cincin/perhiasan.", price: "Rp 80.000", unit: "/hari", img: "lengkung 1.jpeg" },
+        { name: "Peti Lengkung Paket Lamaran", size: "32×26×22 cm", desc: "Paket 4 Peti Lengkung", price: "Rp 320.000", unit: "/hari", img: "lengkung lamaran.jpeg" },
+        { name: "Peti Lengkung Paket Wedding", size: "40×32×28 cm", desc: "Paket 8 Peti Lengkung untuk seserahan utama.", price: "Rp 640.000", unit: "/hari", img: "lengkung 8.jpeg" }
       ]
     },
     "ring-box": {
       cat: "Engagement Ring Box", icon: "ringclassic",
       items: [
-        { name: "Ring Box ", size: "12×12×10 cm", icon: "ringclassic", desc: "Bantalan beludru dengan dekorasi bunga", price: "Rp 50.000", unit: "/hari", img: "jewelry box.jpeg" },
-        { name: "Ring Box Crystal", size: "12×12×10 cm", icon: "ringcrystal", desc: "Taburan kristal berkilau mengelilingi bingkai cincin.", price: "Rp 100.000", unit: "/hari", badge: "Mewah", img: "jewerly box.jpeg" }
+        { name: "Ring Box", size: "12×12×10 cm", icon: "ringclassic", desc: "Bantalan beludru dengan dekorasi bunga", price: "Rp 50.000", unit: "/hari", img: "ring-box-velvet.jpeg" },
+        { name: "Ring Box Crystal", size: "12×12×10 cm", icon: "ringcrystal", desc: "Taburan kristal berkilau mengelilingi bingkai cincin.", price: "Rp 100.000", unit: "/hari", badge: "Mewah", img: "ring-box-crystal.jpeg" }
       ]
     },
     "parcel": {
       cat: "Parcel Seserahan", icon: "parcel",
       items: [
-        { name: "Parcel Seserahan", size: "1 keranjang", desc: "Rangkaian parcel dapat disesuaikan dengan kebutuhan Anda.", price: "Rp 50.000 - Rp 1.000.000", unit: "/paket", img: "parcel.jpeg" }
+        { name: "Parcel Seserahan", size: "1 keranjang", desc: "Rangkaian parcel dapat disesuaikan dengan kebutuhan Anda.", price: "Rp 50.000 - Rp 1.000.000", unit: "/paket", img: "parcel-seserahan.jpeg" }
       ]
     },
     "mobil": {
       cat: "Wedding Car Decoration", icon: "mobil",
       items: [
-        { name: "Paket Simple Wedding Car", size: "1 unit mobil", desc: "Dekorasi bunga sederhana di kap depan dan kaca belakang dan dapat disesuaikan dengan kebutuhan Anda.", price: "Rp 250.000 - Rp 400.000", unit: "/acara", img: "car.jpeg" }
+        { name: "Paket Simple Wedding Car", size: "1 unit mobil", desc: "Dekorasi bunga sederhana di kap depan dan kaca belakang dan dapat disesuaikan dengan kebutuhan Anda.", price: "Rp 250.000 - Rp 400.000", unit: "/acara", img: "wedding-car.jpeg" }
       ]
     }
   };
@@ -781,7 +878,7 @@
           </div>
           <div class="card-body">
             <h3>${item.name}</h3>
-            <div class="card-meta"><span>${item.unit.replace('/','')}</span></div>
+            <div class="card-meta">${item.size ? `<span>${item.size}</span>` : ``}</div>
             <p class="card-desc">${item.desc}</p>
             <div class="card-footer">
               <div class="price">${item.price}<small> ${item.unit}</small></div>
